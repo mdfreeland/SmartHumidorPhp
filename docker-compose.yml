@@ -5,7 +5,7 @@ services:
     ports: 
       - "8080:80"
     volumes:
-      - ./SmartHumidor:/src/SmartHumidor
+      - .:/src/SmartHumidor
       - ./site.conf:/etc/nginx/conf.d/site.conf
     links:
       - php
@@ -13,4 +13,4 @@ services:
     build:
       context: './build'
     volumes:
-      - ./SmartHumidor:/src/SmartHumidor
+      - .:/src/SmartHumidor

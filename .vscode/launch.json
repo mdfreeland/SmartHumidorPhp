@@ -11,7 +11,7 @@
             "request": "launch",
             "port": 9001,
             "pathMappings": {
-                "/src/SmartHumidor": "${workspaceRoot}/SmartHumidor"
+                "/src/SmartHumidor": "${workspaceRoot}"
             }
         }
     ]
