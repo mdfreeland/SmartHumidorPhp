@@ -1,16 +1,26 @@
 version: '2'
 services:
-  web:
+  api:
     image: nginx:latest
     ports: 
       - "8080:80"
     volumes:
-      - .:/src/SmartHumidor
-      - ./site.conf:/etc/nginx/conf.d/site.conf
+      - ./api:/src/SmartHumidor
+      - ./api/site.conf:/etc/nginx/conf.d/site.conf
     links:
       - php
   php:
     build:
-      context: './build'
+      context: './api/build'
     volumes:
-      - .:/src/SmartHumidor
+      - ./api:/src/SmartHumidor
+  webapp:
+    build:
+      context: ./webapp
+    volumes:
+      - './webapp:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
